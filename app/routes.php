@@ -36,7 +36,7 @@ return function (App $app) {
         }
 
         // Initialize the OpenAI client
-        $client = \OpenAI::client('');
+        $client = \OpenAI::client($_ENV['OPENAI_API_KEY']);
 
         // Generate ideas using the OpenAI API
         // $prompt = "Generate 5 creative content ideas for the niche: " . $data['niche'];

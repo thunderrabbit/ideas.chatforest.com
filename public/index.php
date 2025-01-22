@@ -12,6 +12,15 @@ use Slim\Factory\ServerRequestCreatorFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+// Load environment variables from .env file
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
+// TODO: REMOVE THIS IN PRODUCTION
+if (!isset($_ENV['OPENAI_API_KEY'])) {
+	throw new RuntimeException('OPENAI_API_KEY is not set in the environment.');
+}
+
 // Instantiate PHP-DI ContainerBuilder
 $containerBuilder = new ContainerBuilder();
 
